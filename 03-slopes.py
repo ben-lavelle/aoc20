@@ -1,13 +1,10 @@
+from assets.loader import gather_day, input_day
 from requests import get
-from assets.config import USER_SESSION_ID
 from itertools import islice
 
-response = get('https://adventofcode.com/2020/day/3/input', cookies={'session': USER_SESSION_ID})
-if response.ok:
-    with open('assets/03-input.txt', 'w') as f:
-        f.write(response.text)
+gather_day(3)
 
-with open('assets/03-input.txt', 'r') as f:
+with open(input_day(3), 'r') as f:
     frontiers = [l.strip() for l in f.readlines()]
     width = len(frontiers[0])
 

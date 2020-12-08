@@ -1,14 +1,11 @@
-from assets.config import USER_SESSION_ID
+from assets.loader import gather_day, input_day
 from requests import get
 from collections import namedtuple
 import re
 
-response = get('https://adventofcode.com/2020/day/5/input', cookies={'session': USER_SESSION_ID})
-if response.ok:
-    with open('assets/05-input.txt', 'w') as f:
-        f.write(response.text)
+gather_day(5)
 
-with open('assets/05-input.txt', 'r') as f:
+with open(input_day(5), 'r') as f:
     passes = [l.strip() for l in f.readlines()]
 
 def locate(seat: str) -> tuple:

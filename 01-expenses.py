@@ -1,14 +1,11 @@
-from assets.config import USER_SESSION_ID
+from assets.loader import gather_day, input_day
 from requests import get
 from collections import deque
 from time import sleep
 
-response = get('https://adventofcode.com/2020/day/1/input', cookies={'session': USER_SESSION_ID})
-if response.ok:
-    with open('assets/01-input.txt', 'w') as f:
-        f.write(response.text)
+gather_day(1)
 
-with open('assets/01-input.txt', 'r') as f:
+with open(input_day(1), 'r') as f:
     expenses = [int(l) for l in f.readlines()]
 
 ### Part 1 ###

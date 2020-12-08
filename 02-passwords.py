@@ -1,13 +1,10 @@
-from assets.config import USER_SESSION_ID
+from assets.loader import gather_day, input_day
 from requests import get
 import re
 
-response = get('https://adventofcode.com/2020/day/2/input', cookies={'session': USER_SESSION_ID})
-if response.ok:
-    with open('assets/02-input.txt', 'w') as f:
-        f.write(response.text)
+gather_day(2)
 
-with open('assets/02-input.txt', 'r') as f:
+with open(input_day(2), 'r') as f:
     passwords = [l.strip() for l in f.readlines()]
 
 ### Part 1 ###

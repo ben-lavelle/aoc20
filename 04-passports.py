@@ -1,13 +1,10 @@
-from assets.config import USER_SESSION_ID
+from assets.loader import gather_day, input_day
 from requests import get
 import re
 
-response = get('https://adventofcode.com/2020/day/4/input', cookies={'session': USER_SESSION_ID})
-if response.ok:
-    with open('assets/04-input.txt', 'w') as f:
-        f.write(response.text)
+gather_day(4)
 
-with open('assets/04-input.txt', 'r') as f:
+with open(input_day(4), 'r') as f:
     mass = f.read()
     passlists = [re.split(r'\s', p) for p in mass.split('\n\n')]
 

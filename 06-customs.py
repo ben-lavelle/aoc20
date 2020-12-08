@@ -1,14 +1,11 @@
-from assets.config import USER_SESSION_ID
+from assets.loader import gather_day, input_day
 from requests import get
 import re
 from functools import reduce
 
-response = get('https://adventofcode.com/2020/day/6/input', cookies={'session': USER_SESSION_ID})
-if response.ok:
-    with open('assets/06-input.txt', 'w') as f:
-        f.write(response.text)
+gather_day(6)
 
-with open('assets/06-input.txt', 'r') as f:
+with open(input_day(6), 'r') as f:
     answerlists = [re.split(r'\s', group) for group in f.read().strip().split('\n\n')]
 
 ### Part 1 ###

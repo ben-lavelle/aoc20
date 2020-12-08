@@ -1,4 +1,5 @@
-from assets.config import USER_SESSION_ID
+from assets.loader import gather_day, input_day
+
 from requests import get
 import re
 import networkx as nx
@@ -8,13 +9,9 @@ from networkx.algorithms.traversal.depth_first_search import dfs_tree, dfs_edges
 from networkx.algorithms.simple_paths import all_simple_edge_paths
 from math import prod
 
+gather_day(7)
 
-response = get('https://adventofcode.com/2020/day/7/input', cookies={'session': USER_SESSION_ID})
-if response.ok:
-    with open('assets/07-input.txt', 'w') as f:
-        f.write(response.text)
-
-with open('assets/07-input.txt', 'r') as f:
+with open(input_day(7), 'r') as f:
     bagrules = [l.strip() for l in f.readlines()]
 
 def rule_to_edges(rule: str) -> list:
